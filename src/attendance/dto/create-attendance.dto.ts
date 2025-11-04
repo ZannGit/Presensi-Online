@@ -1,14 +1,10 @@
 import { IsInt, IsOptional, IsString } from 'class-validator';
 
+// src/attendance/dto/create-attendance.dto.ts
+
 export class CreateAttendanceDto {
-  @IsInt()
-  userId: number;
-
-  @IsOptional()
-  @IsString()
-  status?: string;
-
-  @IsOptional()
-  @IsString()
-  note?: string;
+  user_id: number;
+  date: string;
+  time: string;
+  status: string;
 }

@@ -1,3 +1,4 @@
+// src/attendance/attendance.controller.ts
 import { Controller, Post, Body, UseGuards, Get, Param } from '@nestjs/common';
 import { AttendanceService } from './attendance.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -14,10 +15,14 @@ export class AttendanceController {
   }
 
   @UseGuards(JwtAuthGuard)
-    @Post('analysis')
-    async analyzeAttendance(@Body() body: { startDate: string; endDate: string; groupBy?: 'kelas' | 'jabatan' }) {
-      return this.svc.analyzeAttendance(body);
-    }
+  @Post('analysis')
+  async analyzeAttendance(@Body() body: {
+    startDate: string;
+    endDate: string;
+    groupBy: string;
+  }) {
+    return this.svc.analyzeAttendance(body);
+  }
 
   @UseGuards(JwtAuthGuard)
   @Get('history/:userId')
